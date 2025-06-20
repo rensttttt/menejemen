@@ -1,0 +1,592 @@
+{% extends "base.html" %}
+
+{% block title %}Unggah Arsip - Arsip Digital Kelurahan{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #1e40af;
+            --danger-color: #dc2626;
+            --success-color: #10b981;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            background-color: #f8fafc;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1f2937;
+        }
+
+        /* Upload Container */
+        .upload-container {
+            min-height: calc(100vh - 100px);
+            padding: 1.5rem 0;
+        }
+
+        /* Dropzone Styling */
+        .dropzone {
+            border: 2px dashed #6b7280;
+            border-radius: var(--border-radius);
+            background: #ffffff;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dropzone:hover {
+            background: #f3f4f6;
+            border-color: var(--primary-color);
+        }
+
+        .dropzone.dz-drag-hover {
+            border-color: var(--success-color);
+            background: #f0fdf4;
+        }
+
+        .dropzone .dz-message {
+            color: #374151;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .dropzone .dz-message i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Card Styling */
+        .card {
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            background: #ffffff;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .dz-preview {
+            display: none !important;
+        }
+
+        /* File Info Styling */
+        #fileInfo {
+            padding: 1rem;
+            background: #f3f4f6;
+            border-radius: var(--border-radius);
+            border: none;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        /* Button Styling */
+        .file-input-label {
+            padding: 0.65rem 1.25rem;
+            background: var(--primary-color);
+            color: #ffffff;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .file-input-label:hover {
+            background: #2563eb;
+        }
+
+        #manualUpload {
+            display: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.65rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        .btn-primary:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .btn-outline-secondary {
+            border-color: #6b7280;
+            color: #6b7280;
+            border-radius: var(--border-radius);
+            padding: 0.65rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-secondary:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .btn-remove {
+            background: var(--danger-color);
+            color: #ffffff;
+            padding: 0.65rem 1rem;
+            border-radius: var(--border-radius);
+            border: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn-remove:hover {
+            background: #b91c1c;
+        }
+
+        /* Form Styling */
+        .form-control, .form-select {
+            border-radius: var(--border-radius);
+            border: 1px solid #d1d5db;
+            font-size: 0.875rem;
+            padding: 0.65rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-text {
+            color: #6b7280;
+            font-size: 0.75rem;
+        }
+
+        /* Alert Styling */
+        .alert {
+            border-radius: var(--border-radius);
+            padding: 0.75rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-border {
+            border-color: var(--danger-color) !important;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+        }
+
+        /* Character Counter */
+        .character-counter {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: right;
+            margin-top: 0.25rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .upload-container {
+                padding: 1rem 0;
+            }
+
+            .dropzone {
+                padding: 1rem;
+            }
+
+            .dropzone .dz-message {
+                font-size: 0.875rem;
+            }
+
+            .dropzone .dz-message i {
+                font-size: 1.5rem;
+            }
+
+            .card-body {
+                padding: 1rem;
+            }
+
+            .form-control, .form-select, .btn {
+                font-size: 0.85rem;
+                padding: 0.5rem;
+            }
+
+            .form-label {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 0.85rem;
+            }
+
+            .file-input-label, .btn {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="upload-container py-3">
+    <div class="container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="row mb-3">
+                    <div class="col-12">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Page Header -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="page-header">
+                    <h1 class="h4 mb-2 fw-bold text-gray-800">
+                        <i class="bi bi-cloud-upload me-2"></i>Unggah Arsip
+                    </h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 bg-white p-2 rounded shadow-sm">
+                            <li class="breadcrumb-item">
+                                <a href="{{ url_for('dashboard') }}" class="text-decoration-none">
+                                    <i class="bi bi-house-door me-1"></i>Dashboard
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="{{ url_for('archive_list') }}" class="text-decoration-none">Arsip</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Unggah</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Form -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="uploadForm" method="POST" action="{{ url_for('archive_upload') }}" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+                            <!-- File Upload Section -->
+                            <div class="section-title">Unggah File</div>
+                            <div class="dropzone" id="archiveDropzone">
+                                <div class="dz-message">
+                                    <i class="bi bi-cloud-arrow-up"></i><br>
+                                    <span class="d-block mb-2">Tarik dan lepas file di sini atau</span>
+                                    <label for="manualUpload" class="file-input-label">
+                                        <i class="bi bi-folder2-open me-1"></i>Pilih File
+                                    </label>
+                                    <input type="file" id="manualUpload" name="file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                    <div class="mt-2 form-text">
+                                        Format: PDF, JPG, PNG, DOC, DOCX, XLS, XLSX (Maks 10MB)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- File Info -->
+                            <div id="fileInfo" class="alert alert-info mb-3">
+                                <div>
+                                    <i class="bi bi-file-earmark me-1"></i>
+                                    <span id="fileName"></span> (<span id="fileSize"></span>)
+                                </div>
+                                <button type="button" id="removeFileBtn" class="btn-remove">
+                                    <i class="bi bi-trash me-1"></i>Hapus
+                                </button>
+                            </div>
+
+                            <!-- Metadata Section -->
+                            <div class="section-title">Detail Arsip</div>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="title" class="form-label">Judul Arsip <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="title" name="title" required maxlength="255" aria-describedby="titleHelp">
+                                    <div id="titleHelp" class="form-text">Judul deskriptif (maksimal 255 karakter)</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="category_id" class="form-label">Kategori Surat <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="category_id" name="category_id" required aria-describedby="categoryHelp">
+                                        <option value="" disabled selected>Pilih Kategori</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div id="categoryHelp" class="form-text">Pilih kategori yang sesuai</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="letter_type" class="form-label">Jenis Surat <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="letter_type" name="letter_type" required aria-describedby="letterTypeHelp">
+                                        <option value="" disabled selected>Pilih Jenis Surat</option>
+                                        <option value="in">Surat Masuk</option>
+                                        <option value="out">Surat Keluar</option>
+                                    </select>
+                                    <div id="letterTypeHelp" class="form-text">Pilih jenis surat (Masuk/Keluar)</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="description" class="form-label">Nomor Surat</label>
+                                    <input type="text" class="form-control" id="description" name="description" maxlength="500" aria-describedby="descriptionHelp">
+                                    <div id="descriptionHelp" class="form-text">Masukkan nomor surat (maksimal 500 karakter)</div>
+                                    <div id="descriptionCounter" class="character-counter">0/500 karakter</div>
+                                </div>
+                                
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Buttons -->
+                            <div class="mt-3 d-flex gap-2">
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
+                                    <i class="bi bi-save me-1"></i>Simpan
+                                </button>
+                                <a href="{{ url_for('archive_list') }}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-x-lg me-1"></i>Batal
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Dropzone
+        Dropzone.autoDiscover = false;
+
+        const dropzone = new Dropzone('#archiveDropzone', {
+            url: '{{ url_for("archive_upload") }}',
+            paramName: 'file',
+            maxFiles: 1,
+            maxFilesize: 10, // MB
+            acceptedFiles: '.pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx',
+            addRemoveLinks: false,
+            autoProcessQueue: false,
+            init: function() {
+                this.on('addedfile', function(file) {
+                    if (this.files.length > 1) {
+                        this.removeFile(this.files[0]);
+                    }
+                    const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                    if (file.size > 10 * 1024 * 1024) {
+                        showAlert('danger', 'Ukuran file maksimal 10MB');
+                        this.removeFile(file);
+                        checkFormValidity();
+                        return;
+                    }
+                    const extension = file.name.split('.').pop().toLowerCase();
+                    const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png', 'doc', 'docx', 'xls', 'xlsx'];
+                    if (!allowedExtensions.includes(extension)) {
+                        showAlert('danger', 'Format file tidak didukung');
+                        this.removeFile(file);
+                        checkFormValidity();
+                        return;
+                    }
+                    updateFileInfo(file.name, fileSizeMB + ' MB');
+                    checkFormValidity();
+                });
+
+                this.on('removedfile', function() {
+                    resetFileInfo();
+                    checkFormValidity();
+                });
+
+                this.on('error', function(file, errorMessage) {
+                    showAlert('danger', errorMessage);
+                    this.removeFile(file);
+                    checkFormValidity();
+                });
+            }
+        });
+
+        // Manual file input handler
+        const manualUpload = document.getElementById('manualUpload');
+        manualUpload.addEventListener('change', function(e) {
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                if (dropzone.files.length > 0) {
+                    dropzone.removeFile(dropzone.files[0]);
+                }
+                dropzone.addFile(file);
+            }
+        });
+
+        // Remove file button
+        const removeFileBtn = document.getElementById('removeFileBtn');
+        removeFileBtn.addEventListener('click', function() {
+            if (dropzone.files.length > 0) {
+                dropzone.removeFile(dropzone.files[0]);
+            }
+            manualUpload.value = '';
+            resetFileInfo();
+            checkFormValidity();
+        });
+
+        // Form submission handling
+        const uploadForm = document.getElementById('uploadForm');
+        const submitBtn = document.getElementById('submitBtn');
+        uploadForm.addEventListener('submit', function(e) {
+            if (dropzone.files.length > 0) {
+                submitBtn.innerHTML = '<i class="bi bi-arrow-repeat me-1"></i>Mengunggah...';
+                submitBtn.disabled = true;
+                dropzone.processQueue();
+            } else {
+                e.preventDefault();
+                showAlert('danger', 'Pilih file terlebih dahulu');
+            }
+        });
+
+        // Input listeners
+        const titleInput = document.getElementById('title');
+        const categorySelect = document.getElementById('category_id');
+        const letterTypeSelect = document.getElementById('letter_type');
+        const descriptionInput = document.getElementById('description');
+        const descriptionCounter = document.getElementById('descriptionCounter');
+
+        titleInput.addEventListener('input', checkFormValidity);
+        categorySelect.addEventListener('change', checkFormValidity);
+        letterTypeSelect.addEventListener('change', checkFormValidity);
+        descriptionInput.addEventListener('input', function() {
+            updateCharacterCounter();
+            checkFormValidity();
+        });
+
+        // Update character counter
+        function updateCharacterCounter() {
+            const length = descriptionInput.value.length;
+            descriptionCounter.textContent = `${length}/500 karakter`;
+            descriptionCounter.style.color = length > 500 ? '#dc2626' : '#6b7280';
+        }
+
+        // Check form validity
+        function checkFormValidity() {
+            const title = titleInput.value.trim();
+            const category = categorySelect.value;
+            const letterType = letterTypeSelect.value;
+            const description = descriptionInput.value.trim();
+            const hasFile = dropzone.files.length > 0;
+
+            // Reset error borders
+            titleInput.classList.remove('error-border');
+            categorySelect.classList.remove('error-border');
+            letterTypeSelect.classList.remove('error-border');
+            descriptionInput.classList.remove('error-border');
+
+            let isValid = true;
+
+            if (!title) {
+                titleInput.classList.add('error-border');
+                isValid = false;
+            }
+            if (!category) {
+                categorySelect.classList.add('error-border');
+                isValid = false;
+            }
+            if (!letterType) {
+                letterTypeSelect.classList.add('error-border');
+                isValid = false;
+            }
+            if (description.length > 500) {
+                descriptionInput.classList.add('error-border');
+                showAlert('danger', 'Nomor surat maksimal 500 karakter');
+                isValid = false;
+            }
+            if (!hasFile) {
+                isValid = false;
+            }
+
+            submitBtn.disabled = !isValid;
+        }
+
+        // Update file info display
+        function updateFileInfo(name, size) {
+            const fileInfo = document.getElementById('fileInfo');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+            fileInfo.style.display = 'flex';
+            fileName.textContent = name;
+            fileSize.textContent = size;
+        }
+
+        // Reset file info
+        function resetFileInfo() {
+            const fileInfo = document.getElementById('fileInfo');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+            fileInfo.style.display = 'none';
+            fileName.textContent = '';
+            fileSize.textContent = '';
+        }
+
+        // Show alert
+        function showAlert(type, message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
+            `;
+            const container = document.querySelector('.upload-container .container');
+            container.insertBefore(alertDiv, container.firstChild);
+            setTimeout(() => {
+                alertDiv.classList.remove('show');
+                setTimeout(() => alertDiv.remove(), 150);
+            }, 3000);
+        }
+
+        // Initialize character counter
+        updateCharacterCounter();
+    });
+</script>
+{% endblock %}

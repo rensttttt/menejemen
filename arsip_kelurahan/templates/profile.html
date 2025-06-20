@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sistem Arsip Digital Kelurahan - Profil Pengguna">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self'; frame-src 'none'; media-src 'self'; object-src 'none';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <title>Profil Pengguna - SAPA PACIRAN</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/static/icons/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --primary-light: #e0e7ff;
+            --danger: #ef4444;
+            --danger-hover: #dc2626;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --light: #f9fafb;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --gray-light: #f3f4f6;
+            --border: #e5e7eb;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.2s ease;
+        }
+
+        body {
+            background: var(--gray-light);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--primary);
+            padding: 0.75rem 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .navbar-brand img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .navbar-avatar {
+            width: 32px;
+            height: 32px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem;
+        }
+
+        .dropdown-item {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-item:hover, .dropdown-item:focus {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            padding: 1.5rem;
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            background: white;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-footer {
+            background: var(--gray-light);
+            padding: 1rem 1.5rem;
+            font-size: 0.875rem;
+            color: var(--gray);
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Profile Section */
+        .profile-section {
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .avatar-edit-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .avatar-edit-btn:hover {
+            background: var(--primary-hover);
+            transform: scale(1.1);
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .profile-role {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary-light);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Stats */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Form Elements */
+        .form-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            font-size: 0.875rem;
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .input-group-text {
+            background: white;
+            border: 1px solid var(--border);
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        /* Buttons */
+        .btn {
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-outline-primary {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-light);
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+        }
+
+        /* Badges */
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        /* Activity Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid white;
+            z-index: 1;
+        }
+
+        .timeline-date {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content {
+            font-size: 0.875rem;
+            background: var(--gray-light);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Sessions */
+        .session-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.75rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .session-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .session-details {
+            flex-grow: 1;
+        }
+
+        .session-device {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .session-meta {
+            font-size: 0.75rem;
+            color: var(--gray);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .session-actions {
+            margin-left: 1rem;
+        }
+
+        /* Modals */
+        .modal-content {
+            border: none;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 1.5rem;
+        }
+
+        .modal-title {
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+        }
+
+        .avatar-preview {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--border);
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-logo {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-divider {
+            border-color: #374151;
+            margin: 2rem 0;
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+            
+            .avatar-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .card-body {
+                padding: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- CSRF Token -->
+    <input type="hidden" id="csrfToken" value="{{ csrf_token() }}">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">
+                <img src="{{ url_for('static', filename='images/logo1.jpeg') }}" alt="Logo Kelurahan">
+                <span>SAPA PACIRAN</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard"><i class="bi bi-house-door"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/archives"><i class="bi bi-archive"></i> Arsip</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img id="navbarAvatar" src="/static/images/default-avatar.png" alt="Avatar Pengguna" class="rounded-circle me-2 navbar-avatar">
+                            <span id="usernameDisplay"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item active" href="/profile"><i class="bi bi-person"></i> Profil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> Keluar</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Alert Container -->
+    <div class="container">
+        <div id="alertContainer" class="mt-3"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <div class="row g-4">
+            <!-- Left Column -->
+            <div class="col-lg-4">
+                <!-- Profile Card -->
+                <div class="card">
+                    <div class="profile-section">
+                        <div class="avatar-container">
+                            <img id="profileAvatar" src="/static/images/default-avatar.png" alt="Avatar Pengguna">
+                            <button class="avatar-edit-btn" data-bs-toggle="modal" data-bs-target="#avatarModal" aria-label="Ubah Foto Profil">
+                                <i class="bi bi-camera"></i>
+                            </button>
+                        </div>
+                        <h3 class="profile-name" id="profileName"></h3>
+                        <div class="profile-role" id="profileRole"></div>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                            <i class="bi bi-key"></i> Ubah Password
+                        </button>
+                    </div>
+                    <div class="card-footer text-center">
+                        <small class="text-muted">Bergabung sejak <span id="joinDate"></span></small>
+                    </div>
+                </div>
+
+                <!-- Account Stats -->
+                <div class="card">
+                    <div class="card-header">
+                        <span>Statistik Akun</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="stats-container">
+                            <div class="stat-item">
+                                <div class="stat-value" id="archiveCount">0</div>
+                                <div class="stat-label">Arsip</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="commentCount">0</div>
+                                <div class="stat-label">Komentar</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="activityCount">0</div>
+                                <div class="stat-label">Aktivitas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <span>Keamanan Akun</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <h6 class="fw-bold mb-2"><i class="bi bi-shield-check text-success me-2"></i> Status Akun</h6>
+                            <span id="accountStatus" class="badge bg-success"></span>
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="fw-bold mb-2"><i class="bi bi-envelope-check text-success me-2"></i> Email Terverifikasi</h6>
+                            <span id="emailVerified" class="badge bg-success"></span>
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="fw-bold mb-2"><i class="bi bi-clock-history text-primary me-2"></i> Login Terakhir</h6>
+                            <p id="lastLogin" class="mb-0 text-muted"></p>
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="fw-bold mb-2"><i class="bi bi-laptop text-primary me-2"></i> Perangkat Aktif</h6>
+                            <p id="activeDevices" class="mb-0 text-muted"></p>
+                        </div>
+                        <button class="btn btn-outline-danger w-100 mt-2" id="logoutAllBtn">
+                            <i class="bi bi-box-arrow-right"></i> Keluar dari Semua Perangkat
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-lg-8">
+                <!-- Profile Details -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <span>Detail Profil</span>
+                        <button class="btn btn-outline-primary btn-sm" id="editProfileBtn">
+                            <i class="bi bi-pencil"></i> Edit
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <form id="profileForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">Nama Depan</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        <input type="text" class="form-control" id="firstName" placeholder="Nama depan" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Nama Belakang</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        <input type="text" class="form-control" id="lastName" placeholder="Nama belakang" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                        <input type="email" class="form-control" id="email" placeholder="Alamat email" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="phone" class="form-label">Nomor Telepon</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-phone"></i></span>
+                                        <input type="tel" class="form-control" id="phone" placeholder="Nomor telepon" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="address" class="form-label">Alamat</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                                        <textarea class="form-control" id="address" rows="2" placeholder="Alamat lengkap" readonly></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="position" class="form-label">Jabatan</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+                                        <input type="text" class="form-control" id="position" placeholder="Jabatan" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="department" class="form-label">Departemen</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-building"></i></span>
+                                        <input type="text" class="form-control" id="department" placeholder="Departemen" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-end d-none" id="profileFormButtons">
+                                <button type="button" class="btn btn-outline-secondary" id="cancelEditBtn">
+                                    <i class="bi bi-x"></i> Batal
+                                </button>
+                                <button type="submit" class="btn btn-primary ms-2">
+                                    <i class="bi bi-save"></i> Simpan Perubahan
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <span>Aktivitas Terakhir</span>
+                    </div>
+                    <div class="card-body">
+                        <div id="activityTimeline" class="timeline">
+                            <div class="text-center py-3">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Memuat...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sessions -->
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <span>Sesi Aktif</span>
+                    </div>
+                    <div class="card-body">
+                        <div id="sessionsList">
+                            <div class="text-center py-3">
+                                <div class="spinner spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Memuat...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Avatar Modal -->
+    <div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-camera me-2"></i> Ubah Foto Profil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="avatarForm" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img id="avatarPreview" src="/static/images/default-avatar.png" alt="Pratinjau Avatar" class="avatar-preview">
+                        </div>
+                        <div class="mb-3">
+                            <label for="avatarInput" class="form-label">Pilih Gambar Baru</label>
+                            <input class="form-control" type="file" id="avatarInput" accept="image/jpeg,image/png,image/webp" required>
+                            <div class="form-text">Format: JPEG, PNG, atau WebP. Ukuran maksimal 2MB.</div>
+                        </div>
+                        <div class="alert alert-danger d-none" id="avatarError"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-key me-2"></i> Ubah Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="passwordForm" autocomplete="off">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="currentPassword" class="form-label">Password Saat Ini</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control" id="currentPassword" placeholder="Masukkan password saat ini" required>
+                                <button class="btn btn-outline-secondary toggle-password" type="button">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">Password Baru</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control" id="newPassword" placeholder="Masukkan password baru" required>
+                                <button class="btn btn-outline-secondary toggle-password" type="button">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                            <div class="form-text">Minimal 8 karakter, mengandung huruf besar, kecil, angka, dan simbol.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Konfirmasi Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Konfirmasi password baru" required>
+                                <button class="btn btn-outline-secondary toggle-password" type="button">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger d-none" id="passwordError"></div>
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle"></i> Setelah mengubah password, Anda akan logout dari semua perangkat.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Ubah Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="{{ url_for('static', filename='images/logo1.jpeg') }}" alt="Logo" class="footer-logo">
+                    <h3 class="footer-title">SAPA PACIRAN</h3>
+                    <p class="text-muted">Solusi terpadu untuk manajemen dokumen dan arsip digital pemerintahan tingkat kelurahan.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="footer-title">Menu</h5>
+                    <ul class="footer-links">
+                        <li><a href="/dashboard"><i class="bi bi-house-door"></i> Dashboard</a></li>
+                        <li><a href="/archives"><i class="bi bi-archive"></i> Arsip</a></li>
+                        <li><a href="/profile"><i class="bi bi-person"></i> Profil</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="footer-title">Bantuan</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-question-circle"></i> Panduan</a></li>
+                        <li><a href="#"><i class="bi bi-shield-lock"></i> Keamanan</a></li>
+                        <li><a href="#"><i class="bi bi-headset"></i> Dukungan</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5 class="footer-title">Kontak</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:arsip@kelurahan.example"><i class="bi bi-envelope"></i> arsip@kelurahan.example</a></li>
+                        <li><a href="tel:+622112345678"><i class="bi bi-telephone"></i> (021) 12345678</a></li>
+                        <li><a href="#"><i class="bi bi-geo-alt"></i> Jl. PACIRAN LAMONGAN JAWATIMUR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="copyright">© 2025 Arsip Digital Kelurahan. Hak cipta dilindungi.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="copyright">Versi 2.0.0</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/static/js/profile.js"></script>
+</body>
+</html>
