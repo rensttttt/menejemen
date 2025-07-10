@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Manajemen Pengguna | Admin arsip_kelurahan</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    
+    <!-- Custom CSS -->
+    <link href="/public/css/styles.css" rel="stylesheet">
+    
+    <!-- Security headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdn.datatables.net 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net https://cdn.datatables.net 'unsafe-inline'; img-src 'self' data:; frame-src 'none'; object-src 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+<body>
+    <!-- CSRF Token (hidden field for forms) -->
+    <input type="hidden" id="csrfToken" value="{{ csrf_token }}">
+    
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center" style="z-index: 9999; display: none;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Memuat...</span>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="d-flex">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white" style="width: 280px; min-height: 100vh;">
+            <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <img src="/static/images/logo.png" alt="Logo" width="40" height="40" class="me-2">
+                <span class="fs-4">arsip_kelurahan</span>
+            </div>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="/admin/dashboard" class="nav-link text-white">
+                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/user-management" class="nav-link active">
+                        <i class="fas fa-users-cog me-2"></i> Manajemen Pengguna
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/archive-management" class="nav-link text-white">
+                        <i class="fas fa-archive me-2"></i> Manajemen Arsip
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/system-settings" class="nav-link text-white">
+                        <i class="fas fa-cogs me-2"></i> Pengaturan Sistem
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/static/images/default-profile.png" alt="Profile" width="32" height="32" class="rounded-circle me-2">
+                    <strong id="currentUsername">Admin</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser">
+                    <li><a class="dropdown-item" href="/profile"><i class="fas fa-user-circle me-2"></i> Profil</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Keluar</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1 p-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2"><i class="fas fa-users-cog me-2"></i> Manajemen Pengguna</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <button type="button" class="btn btn-sm btn-success" id="addUserBtn">
+                            <i class="fas fa-user-plus me-1"></i> Tambah Pengguna
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Statistics Cards -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title">Total Pengguna</h6>
+                                    <h2 class="mb-0" id="totalUsers">0</h2>
+                                </div>
+                                <i class="fas fa-users fa-3x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-success">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title">Aktif</h6>
+                                    <h2 class="mb-0" id="activeUsers">0</h2>
+                                </div>
+                                <i class="fas fa-user-check fa-3x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-warning">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title">Belum Verifikasi</h6>
+                                    <h2 class="mb-0" id="unverifiedUsers">0</h2>
+                                </div>
+                                <i class="fas fa-user-clock fa-3x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-danger">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title">Diblokir</h6>
+                                    <h2 class="mb-0" id="blockedUsers">0</h2>
+                                </div>
+                                <i class="fas fa-user-slash fa-3x opacity-50"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Management Table -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-table me-2"></i> Daftar Pengguna</span>
+                        <div class="input-group" style="width: 300px;">
+                            <input type="text" class="form-control" id="userSearchInput" placeholder="Cari pengguna...">
+                            <button class="btn btn-outline-secondary" type="button" id="userSearchBtn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nama Pengguna</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Email</th>
+                                    <th>Peran</th>
+                                    <th>Status</th>
+                                    <th>Terakhir Login</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Users will be loaded via AJAX -->
+                                <tr>
+                                    <td colspan="8" class="text-center">Memuat daftar pengguna...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit User Modal -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userModalLabel">Tambah Pengguna Baru</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="userForm" novalidate>
+                    <div class="modal-body">
+                        <input type="hidden" id="userId">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Nama Pengguna <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="username" name="username" required 
+                                           pattern="[a-zA-Z0-9_]{4,20}" title="4-20 karakter (huruf, angka, underscore)">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Kata Sandi <span class="text-danger" id="passwordRequired">*</span></label>
+                                    <input type="password" class="form-control" id="password" name="password" 
+                                           autocomplete="new-password" minlength="8">
+                                    <div class="form-text">Minimal 8 karakter. Kosongkan jika tidak ingin mengubah.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="fullName" name="fullName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Nomor Telepon</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10,15}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Konfirmasi Kata Sandi</label>
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" 
+                                           autocomplete="new-password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="role" class="form-label">Peran <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="role" name="role" required>
+                                        <option value="user">User Biasa</option>
+                                        <option value="editor">Editor</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="status" name="status" required>
+                                        <option value="active">Aktif</option>
+                                        <option value="inactive">Nonaktif</option>
+                                        <option value="pending">Belum Verifikasi</option>
+                                        <option value="blocked">Diblokir</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">Catatan</label>
+                            <textarea class="form-control" id="notes" name="notes" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="confirmModalLabel">Konfirmasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="confirmModalBody">
+                    Apakah Anda yakin ingin menghapus pengguna ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger" id="confirmActionBtn">Ya, Lanjutkan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Modal -->
+    <div class="modal fade" id="securityModal" tabindex="-1" aria-labelledby="securityModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="securityModalLabel">Verifikasi Keamanan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Untuk melanjutkan tindakan sensitif ini, harap verifikasi identitas Anda:</p>
+                    <div class="mb-3">
+                        <label for="securityPassword" class="form-label">Password Anda</label>
+                        <input type="password" class="form-control" id="securityPassword" autocomplete="off">
+                    </div>
+                    <div class="mb-3" id="twoFactorCodeGroup" style="display: none;">
+                        <label for="twoFactorCode" class="form-label">Kode Autentikasi Dua Faktor</label>
+                        <input type="text" class="form-control" id="twoFactorCode" autocomplete="off" inputmode="numeric" pattern="[0-9]{6}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger" id="verifySecurityBtn">
+                        <i class="fas fa-shield-alt me-1"></i> Verifikasi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- jQuery (required for DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/admin.js"></script>
+    
+    <!-- User Management JS -->
+    <script>
+        // Global variables
+        let currentAction = null;
+        let currentUserId = null;
+        let usersTable = null;
+        
+        // Document ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize DataTable
+            usersTable = $('#usersTable').DataTable({
+                ajax: {
+                    url: '/admin/api/users',
+                    type: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                        'X-CSRF-TOKEN': document.getElementById('csrfToken').value
+                    },
+                    dataSrc: 'data'
+                },
+                columns: [
+                    { data: 'id' },
+                    { data: 'username' },
+                    { data: 'fullName' },
+                    { data: 'email' },
+                    { 
+                        data: 'role',
+                        render: function(data) {
+                            return getRoleBadge(data);
+                        }
+                    },
+                    { 
+                        data: 'status',
+                        render: function(data) {
+                            return getStatusBadge(data);
+                        }
+                    },
+                    { 
+                        data: 'lastLogin',
+                        render: function(data) {
+                            return data ? new Date(data).toLocaleString() : 'Belum pernah';
+                        }
+                    },
+                    {
+                        data: 'id',
+                        render: function(data, type, row) {
+                            return `
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button class="btn btn-outline-primary edit-user" data-id="${data}" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    ${row.role !== 'admin' ? `
+                                    <button class="btn btn-outline-danger delete-user" data-id="${data}" title="Hapus">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    ` : ''}
+                                </div>
+                            `;
+                        },
+                        orderable: false
+                    }
+                ],
+                responsive: true,
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json'
+                }
+            });
+            
+            // Load user statistics
+            loadUserStatistics();
+            
+            // Event listeners
+            document.getElementById('addUserBtn').addEventListener('click', showAddUserModal);
+            document.getElementById('userForm').addEventListener('submit', handleUserFormSubmit);
+            document.getElementById('userSearchBtn').addEventListener('click', searchUsers);
+            document.getElementById('userSearchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') searchUsers();
+            });
+            document.getElementById('verifySecurityBtn').addEventListener('click', verifySecurity);
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            
+            // Table action buttons (using event delegation)
+            document.getElementById('usersTable').addEventListener('click', function(e) {
+                if (e.target.closest('.edit-user')) {
+                    const userId = e.target.closest('.edit-user').getAttribute('data-id');
+                    showEditUserModal(userId);
+                }
+                
+                if (e.target.closest('.delete-user')) {
+                    const userId = e.target.closest('.delete-user').getAttribute('data-id');
+                    confirmDeleteUser(userId);
+                }
+            });
+            
+            // Check if two-factor is required
+            checkTwoFactorRequirement();
+        });
+        
+        // Load user statistics
+        function loadUserStatistics() {
+            fetch('/admin/api/users/statistics', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'X-CSRF-TOKEN': document.getElementById('csrfToken').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('totalUsers').textContent = data.data.totalUsers;
+                    document.getElementById('activeUsers').textContent = data.data.activeUsers;
+                    document.getElementById('unverifiedUsers').textContent = data.data.unverifiedUsers;
+                    document.getElementById('blockedUsers').textContent = data.data.blockedUsers;
+                } else {
+                    showError('Gagal memuat statistik pengguna: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showError('Terjadi kesalahan saat memuat statistik pengguna');
+            });
+        }
+        
+        // Show add user modal
+        function showAddUserModal() {
+            const modal = new bootstrap.Modal(document.getElementById('userModal'));
+            
+            // Reset form
+            document.getElementById('userForm').reset();
+            document.getElementById('userId').value = '';
+            document.getElementById('userModalLabel').textContent = 'Tambah Pengguna Baru';
+            document.getElementById('passwordRequired').style.display = 'inline';
+            document.getElementById('password').required = true;
+            
+            modal.show();
+        }
+        
+        // Show edit user modal
+        function showEditUserModal(userId) {
+            const modal = new bootstrap.Modal(document.getElementById('userModal'));
+            
+            showLoading();
+            
+            fetch(`/admin/api/users/${userId}`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'X-CSRF-TOKEN': document.getElementById('csrfToken').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                hideLoading();
+                
+                if (data.success) {
+                    const user = data.data;
+                    
+                    // Fill form
+                    document.getElementById('userId').value = user.id;
+                    document.getElementById('username').value = user.username;
+                    document.getElementById('email').value = user.email;
+                    document.getElementById('fullName').value = user.fullName;
+                    document.getElementById('phone').value = user.phone || '';
+                    document.getElementById('role').value = user.role;
+                    document.getElementById('status').value = user.status;
+                    document.getElementById('notes').value = user.notes || '';
+                    
+                    // Update UI
+                    document.getElementById('userModalLabel').textContent = 'Edit Pengguna';
+                    document.getElementById('passwordRequired').style.display = 'none';
+                    document.getElementById('password').required = false;
+                    
+                    modal.show();
+                } else {
+                    showError('Gagal memuat data pengguna: ' + data.message);
+                }
+            })
+            .catch(error => {
+                hideLoading();
+                console.error('Error:', error);
+                showError('Terjadi kesalahan saat memuat data pengguna');
+            });
+        }
+        
+        // Handle user form submission
+        function handleUserFormSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const userId = document.getElementById('userId').value;
+            const isEdit = !!userId;
+            
+            // Client-side validation
+            if (formData.get('password') && formData.get('password') !== formData.get('confirmPassword')) {
+                showError('Kata sandi dan konfirmasi kata sandi tidak cocok');
+                return;
+            }
+            
+            // Remove confirmPassword from formData
+            formData.delete('confirmPassword');
+            
+            // If editing and password is empty, remove it
+            if (isEdit && !formData.get('password')) {
+                formData.delete('password');
+            }
+            
+            showLoading();
+            
+            const url = isEdit ? `/admin/api/users/${userId}` : '/admin/api/users';
+            const method = isEdit ? 'PUT' : 'POST';
+            
+            fetch(url, {
+                method: method,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'X-CSRF-TOKEN': document.getElementById('csrfToken').value
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                hideLoading();
+                
+                if (data.success) {
+                    showSuccess(`Pengguna berhasil ${isEdit ? 'diperbarui' : 'ditambahkan'}!`);
+                    
+                    // Close modal and refresh table
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('userModal'));
+                    modal.hide();
+                    
+                    usersTable.ajax.reload();
+                    loadUserStatistics();
+                } else {
+                    showError(`Gagal ${isEdit ? 'mengupdate' : 'menambahkan'} pengguna: ${data.message}`);
+                }
+            })
+            .catch(error => {
+                hideLoading();
+                console.error('Error:', error);
+                showError(`Terjadi kesalahan saat ${isEdit ? 'mengupdate' : 'menambahkan'} pengguna`);
+            });
+        }
+        
+        // Confirm user deletion
+        function confirmDeleteUser(userId) {
+            currentAction = 'delete_user';
+            currentUserId = userId;
+            
+            const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            
+            // Set modal content
+            document.getElementById('confirmModalBody').textContent = 
+                'Apakah Anda yakin ingin menghapus pengguna ini? Tindakan ini tidak dapat dibatalkan.';
+            
+            // Set confirm button action
+            document.getElementById('confirmActionBtn').onclick = function() {
+                modal.hide();
+                showSecurityVerification();
+            };
+            
+            modal.show();
+        }
+        
+        // Show security verification
+        function showSecurityVerification() {
+            const modal = new bootstrap.Modal(document.getElementById('securityModal'));
+            modal.show();
+        }
+        
+        // Verify security action
+        function verifySecurity() {
+            const password = document.getElementById('securityPassword').value;
+            const twoFactorCode = document.getElementById('twoFactorCode').value;
+            
+            if (!password) {
+                showError('Harap masukkan password Anda');
+                return;
+            }
+            
+            showLoading();
+            
+            fetch('/admin/api/verify-security', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'X-CSRF-TOKEN': document.getElementById('csrfToken').value
+                },
+                body: JSON.stringify({
+                    password: password,
+                    twoFactorCode: twoFactorCode || undefined,
+                    action: currentAction
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                hideLoading();
+                
+                if (data.success) {
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('securityModal'));
+                    modal.hide();
+                    
+                    // Clear form
+                    document.getElementById('securityPassword').value = '';
+                    document.getElementById('twoFactorCode').value = '';
+                    
+                    // Execute the action
+                    if (currentAction === 'delete_user') {
+                        deleteUser(currentUserId);
+                    }
+                } else {
+                    showError('Verifikasi gagal: ' + data.message);
+                }
+            })
+            .catch(error => {
+                hideLoading();
+                console.error('Error:', error);
+                showError('Terjadi kesalahan saat verifikasi');
+            });
+        }
+        
+        // Delete user
+        function deleteUser(userId) {
+            showLoading();
+            
+            fetch(`/admin/api/users/${userId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'X-CSRF-TOKEN': document.getElementById('csrfToken').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                hideLoading();
+                
+                if (data.success) {
+                    showSuccess('Pengguna berhasil dihapus!');
+                    usersTable.ajax.reload();
+                    loadUserStatistics();
+                } else {
+                    showError('Gagal menghapus pengguna: ' + data.message);
+                }
+            })
+            .catch(error => {
+                hideLoading();
+                console.error('Error:', error);
+                showError('Terjadi kesalahan saat menghapus pengguna');
+            });
+        }
+        
+        // Search users
+        function searchUsers() {
+            const searchTerm = document.getElementById('userSearchInput').value.trim();
+            
+            if (searchTerm) {
+                usersTable.search(searchTerm).draw();
+            } else {
+                usersTable.search('').draw();
+            }
+        }
+        
+        // Check if two-factor is required
+        function checkTwoFactorRequirement() {
+            fetch('/admin/api/two-factor-required', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'X-CSRF-TOKEN': document.getElementById('csrfToken').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.data.required) {
+                    document.getElementById('twoFactorCodeGroup').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error checking two-factor requirement:', error);
+            });
+        }
+        
+        // Helper function to get role badge
+        function getRoleBadge(role) {
+            switch (role) {
+                case 'admin': return '<span class="badge bg-danger">Admin</span>';
+                case 'editor': return '<span class="badge bg-primary">Editor</span>';
+                default: return '<span class="badge bg-secondary">User</span>';
+            }
+        }
+        
+        // Helper function to get status badge
+        function getStatusBadge(status) {
+            switch (status) {
+                case 'active': return '<span class="badge bg-success">Aktif</span>';
+                case 'inactive': return '<span class="badge bg-secondary">Nonaktif</span>';
+                case 'pending': return '<span class="badge bg-warning text-dark">Belum Verifikasi</span>';
+                case 'blocked': return '<span class="badge bg-danger">Diblokir</span>';
+                default: return '<span class="badge bg-light text-dark">Unknown</span>';
+            }
+        }
+        
+        // Show loading overlay
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+        }
+        
+        // Hide loading overlay
+        function hideLoading() {
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }
+        
+        // Show success message
+        function showSuccess(message) {
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed bottom-0 end-0 p-3';
+            toast.style.zIndex = '9999';
+            toast.innerHTML = `
+                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header bg-success text-white">
+                        <strong class="me-auto">Sukses</strong>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${escapeHtml(message)}
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
+        
+        // Show error message
+        function showError(message) {
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed bottom-0 end-0 p-3';
+            toast.style.zIndex = '9999';
+            toast.innerHTML = `
+                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header bg-danger text-white">
+                        <strong class="me-auto">Error</strong>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${escapeHtml(message)}
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
+        
+        // Helper function to escape HTML
+        function escapeHtml(unsafe) {
+            if (!unsafe) return '';
+            return unsafe.toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+        
+        // Logout function
+        function logout() {
+            fetch('/logout', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                    'X-CSRF-TOKEN': document.getElementById('csrfToken').value
+                }
+            })
+            .then(() => {
+                localStorage.removeItem('authToken');
+                window.location.href = '/login';
+            })
+            .catch(error => {
+                console.error('Logout error:', error);
+                window.location.href = '/login';
+            });
+        }
+    </script>
+</body>
+</html>
+

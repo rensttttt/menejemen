@@ -1,0 +1,900 @@
+2025-07-10 06:49:43,688 - arsip_kelurahan - ERROR - [dab9d100-5f6b-4460-8dce-0fe86d01ae09] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:43,749 - arsip_kelurahan - ERROR - [e2199382-0833-4766-9ace-75a0b08092ba] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:43,860 - arsip_kelurahan - ERROR - [553d2c7f-e068-4fa4-81f4-dfd8fa23a2cb] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:44,171 - arsip_kelurahan - ERROR - [5f5af5f3-c04b-402d-b34a-02357738d56e] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:44,382 - arsip_kelurahan - ERROR - [a328b266-46fe-419c-9631-abf0166f9ba0] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:44,611 - arsip_kelurahan - ERROR - [33c6ebf7-dc40-4846-8d54-09d4444cf752] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:44,777 - arsip_kelurahan - ERROR - [6a3fabbb-f824-4a04-a1a3-bf5ccc0b286f] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:45,013 - arsip_kelurahan - ERROR - [31795410-ed30-4645-b985-ffd74b93417d] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:45,171 - arsip_kelurahan - ERROR - [d96b203f-d4f5-40d9-8a51-cdfedc9afc43] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:45,405 - arsip_kelurahan - ERROR - [e6702709-f82f-409b-aaf7-7ef9dd570b98] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:46,584 - arsip_kelurahan - ERROR - [25f6eac2-9cd5-47cf-9186-d0510cb681f4] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:46,604 - arsip_kelurahan - ERROR - [6fcd0515-934e-43f1-b644-fdc96548bb1b] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:46,635 - arsip_kelurahan - ERROR - [806c7885-86e4-4e6e-bfb1-00b9d420477f] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:46,882 - arsip_kelurahan - ERROR - [a4bafba1-3d2c-4c9f-b1b4-8f9c4e45fe12] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:47,226 - arsip_kelurahan - ERROR - [4a341a87-bf8f-4910-ab40-12d5c2775b05] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:47,486 - arsip_kelurahan - ERROR - [f76871ec-cc37-463b-bb5f-551ad80b8583] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:47,651 - arsip_kelurahan - ERROR - [82ae3482-109d-4d46-8c16-600a370e25c3] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:47,906 - arsip_kelurahan - ERROR - [02954429-ddc8-40cd-877e-1ba42a5aee9f] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:48,059 - arsip_kelurahan - ERROR - [a960d1ba-8a16-4bf1-a33f-9188fea1bff6] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:48,320 - arsip_kelurahan - ERROR - [8381e023-d64a-44af-bb60-4f35d1889ce0] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:53,516 - arsip_kelurahan - ERROR - [e6664f3a-8f64-4ab1-aebc-e8db062073a0] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:53,539 - arsip_kelurahan - ERROR - [c5d4b20e-dd68-4823-9c06-5118270f8be9] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:53,561 - arsip_kelurahan - ERROR - [fad6e861-dc7f-4024-823b-3796db41daef] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    {% include 'partials/dashboard_body.html' %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:53,825 - arsip_kelurahan - ERROR - [a9c0ee21-8697-46f4-ad42-77ccf91dc414] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    <div class="content-area">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:54,194 - arsip_kelurahan - ERROR - [7025b108-e64f-49e5-8ac9-7c7f50a0209a] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    <div class="content-area">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:54,338 - arsip_kelurahan - ERROR - [c2f5cee0-995d-4d30-9056-0be178b7a6b8] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    <div class="content-area">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:54,578 - arsip_kelurahan - ERROR - [56817568-a01a-41d9-bb21-59b197f4cc0f] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    <div class="content-area">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:54,769 - arsip_kelurahan - ERROR - [92c7e923-4b36-4d82-86f0-036c6229ef5b] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    <div class="content-area">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:55,038 - arsip_kelurahan - ERROR - [9108c86b-d392-47c5-b286-3ab9f1d5929e] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    <div class="content-area">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:49:55,104 - arsip_kelurahan - ERROR - [834b6458-c83e-4bbb-8a01-5709477ce350] Dashboard unexpected error: partials/dashboard_body.html
+Traceback (most recent call last):
+  File "D:\Dev\arsip_kelurahan\app.py", line 1435, in dashboard
+    return render_template('dashboard.html', **dashboard_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "D:\Dev\arsip_kelurahan\templates\base.html", line 464, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\templates\dashboard.html", line 91, in block 'content'
+    <div class="content-area">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\arsip_kelurahan\.venv\Lib\site-packages\flask\templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: partials/dashboard_body.html
+2025-07-10 06:52:29,051 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:31,107 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:33,151 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:35,194 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:37,243 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:39,281 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:41,333 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:43,371 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:45,410 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:47,463 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:49,510 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:51,559 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:53,606 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:52:55,646 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:24,328 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:26,372 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:28,416 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:30,456 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:32,506 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:34,548 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:36,591 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:38,641 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:40,685 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:42,717 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:44,766 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:46,801 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:48,851 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:50,875 - arsip_kelurahan - ERROR - Database connection failed: 2003: Can't connect to MySQL server on 'localhost:3306' (10061 No connection could be made because the target machine actively refused it)
+2025-07-10 06:53:51,907 - arsip_kelurahan - ERROR - Database connection failed during login attempt
+2025-07-10 06:58:58,016 - arsip_kelurahan - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.

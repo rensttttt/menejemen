@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Arsip Kelurahan{% endblock %}
+
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeIn 0.5s ease-out; }
+    .toggle-password:hover { background-color: #e5e7eb; }
+    .form-control:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+    .spinner-border { vertical-align: middle; }
+    .password-match { color: green; display: none; }
+    .password-mismatch { color: red; display: none; }
+    .error-border { border-color: #dc2626; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-100 flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl fade-in">
+        
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-blue-400 text-white text-center py-6 rounded-t-2xl">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo Arsip Kelurahan" class="h-12 mx-auto mb-3">
+            <h2 class="text-2xl font-bold">Daftar Akun Baru</h2>
+            <p class="text-sm opacity-90">Buat akun untuk mengelola arsip kelurahan</p>
+        </div>
+
+        <!-- Flash Messages -->
+        <div class="px-6 py-8 sm:px-10">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="mb-4 p-4 rounded-lg text-sm flex items-center justify-between
+                            {% if category == 'success' %}bg-green-100 text-green-700{% endif %}
+                            {% if category == 'danger' %}bg-red-100 text-red-700{% endif %}"
+                            role="alert">
+                            {{ message }}
+                            <button type="button" class="text-current opacity-75 hover:opacity-100" onclick="this.parentElement.remove()" aria-label="Tutup">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <!-- Registration Form -->
+            <form method="POST" action="{{ url_for('register') }}" id="registerForm" class="space-y-6" novalidate>
+                {{ form.hidden_tag() }}
+
+                <!-- Username -->
+                <div>
+                    <label for="{{ form.username.id }}" class="block text-sm font-medium text-gray-700">{{ form.username.label.text }}</label>
+                    <div class="mt-1 relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="bi bi-person text-gray-400"></i>
+                        </div>
+                        {{ form.username(class="form-control block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm", placeholder="Masukkan username Anda", aria_describedby="usernameHelp usernameError", **{'aria-invalid': 'true' if form.username.errors else 'false'}) }}
+                    </div>
+                    {% if form.username.errors %}
+                        <p id="usernameError" class="mt-1 text-sm text-red-600" role="alert">{{ form.username.errors[0] }}</p>
+                    {% endif %}
+                    <p id="usernameHelp" class="mt-1 text-xs text-gray-500">Hanya huruf, angka, dan underscore. 4-80 karakter.</p>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="{{ form.email.id }}" class="block text-sm font-medium text-gray-700">{{ form.email.label.text }}</label>
+                    <div class="mt-1 relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="bi bi-envelope text-gray-400"></i>
+                        </div>
+                        {{ form.email(class="form-control block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm", placeholder="Masukkan email aktif", aria_describedby="emailHelp emailError", **{'aria-invalid': 'true' if form.email.errors else 'false'}) }}
+                    </div>
+                    {% if form.email.errors %}
+                        <p id="emailError" class="mt-1 text-sm text-red-600" role="alert">{{ form.email.errors[0] }}</p>
+                    {% endif %}
+                    <p id="emailHelp" class="mt-1 text-xs text-gray-500">Gunakan email aktif untuk verifikasi.</p>
+                </div>
+
+                <!-- Full Name -->
+                <div>
+                    <label for="{{ form.full_name.id }}" class="block text-sm font-medium text-gray-700">{{ form.full_name.label.text }}</label>
+                    <div class="mt-1 relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="bi bi-person-circle text-gray-400"></i>
+                        </div>
+                        {{ form.full_name(class="form-control block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm", placeholder="Masukkan nama lengkap", aria_describedby="fullNameHelp fullNameError", **{'aria-invalid': 'true' if form.full_name.errors else 'false'}) }}
+                    </div>
+                    {% if form.full_name.errors %}
+                        <p id="fullNameError" class="mt-1 text-sm text-red-600" role="alert">{{ form.full_name.errors[0] }}</p>
+                    {% endif %}
+                    <p id="fullNameHelp" class="mt-1 text-xs text-gray-500">Masukkan nama lengkap Anda. Minimal 2 karakter.</p>
+                </div>
+
+                <!-- Phone -->
+                <div>
+                    <label for="{{ form.phone.id }}" class="block text-sm font-medium text-gray-700">{{ form.phone.label.text }}</label>
+                    <div class="mt-1 relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="bi bi-telephone text-gray-400"></i>
+                        </div>
+                        {{ form.phone(class="form-control block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm", placeholder="Masukkan nomor telepon (opsional)", aria_describedby="phoneHelp phoneError", **{'aria-invalid': 'true' if form.phone.errors else 'false'}) }}
+                    </div>
+                    {% if form.phone.errors %}
+                        <p id="phoneError" class="mt-1 text-sm text-red-600" role="alert">{{ form.phone.errors[0] }}</p>
+                    {% endif %}
+                    <p id="phoneHelp" class="mt-1 text-xs text-gray-500">Hanya angka dan tanda + (opsional).</p>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="{{ form.password.id }}" class="block text-sm font-medium text-gray-700">{{ form.password.label.text }}</label>
+                    <div class="mt-1 relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="bi bi-lock text-gray-400"></i>
+                        </div>
+                        {{ form.password(class="form-control block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm", placeholder="Masukkan kata sandi", id="password", aria_describedby="passwordHelp passwordError", **{'aria-invalid': 'true' if form.password.errors else 'false'}) }}
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                            <button type="button" class="toggle-password text-gray-400 hover:text-gray-500 focus:outline-none" data-target="password">
+                                <i class="bi bi-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    {% if form.password.errors %}
+                        <p id="passwordError" class="mt-1 text-sm text-red-600" role="alert">{{ form.password.errors[0] }}</p>
+                    {% endif %}
+                    <p id="passwordHelp" class="mt-1 text-xs text-gray-500">Minimal 8 karakter, termasuk huruf besar, kecil, angka, dan simbol.</p>
+                </div>
+
+                <!-- Confirm Password -->
+                <div>
+                    <label for="{{ form.confirm_password.id }}" class="block text-sm font-medium text-gray-700">{{ form.confirm_password.label.text }}</label>
+                    <div class="mt-1 relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="bi bi-lock text-gray-400"></i>
+                        </div>
+                        {{ form.confirm_password(class="form-control block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm", placeholder="Masukkan ulang kata sandi", id="confirm_password", aria_describedby="confirmPasswordHelp confirmPasswordError", **{'aria-invalid': 'true' if form.confirm_password.errors else 'false'}) }}
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                            <button type="button" class="toggle-password text-gray-400 hover:text-gray-500 focus:outline-none" data-target="confirm_password">
+                                <i class="bi bi-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    {% if form.confirm_password.errors %}
+                        <p id="confirmPasswordError" class="mt-1 text-sm text-red-600" role="alert">{{ form.confirm_password.errors[0] }}</p>
+                    {% endif %}
+                    <p id="confirmPasswordHelp" class="mt-1 text-xs text-gray-500">Masukkan kata sandi yang sama seperti di atas.</p>
+                    <span id="passwordMatch" class="password-match text-xs mt-1">
+                        <i class="bi bi-check-circle"></i> Password cocok
+                    </span>
+                    <span id="passwordMismatch" class="password-mismatch text-xs mt-1">
+                        <i class="bi bi-exclamation-circle"></i> Password tidak cocok
+                    </span>
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit" class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition duration-150">
+                        Daftar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle password visibility
+    document.querySelectorAll('.toggle-password').forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const input = document.getElementById(targetId);
+            const icon = this.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            }
+        });
+    });
+
+    // Real-time validation for username
+    const username = document.getElementById('username');
+    const usernameHelp = document.getElementById('usernameHelp');
+    username.addEventListener('input', function() {
+        const regex = /^[A-Za-z0-9_]+$/;
+        if (this.value.length >= 4 && regex.test(this.value)) {
+            usernameHelp.classList.remove('text-red-600');
+            usernameHelp.classList.add('text-gray-500');
+            this.classList.remove('error-border');
+        } else {
+            usernameHelp.classList.add('text-red-600');
+            usernameHelp.classList.remove('text-gray-500');
+            this.classList.add('error-border');
+        }
+    });
+
+    // Real-time validation for password
+    const password = document.getElementById('password');
+    const passwordHelp = document.getElementById('passwordHelp');
+    password.addEventListener('input', function() {
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (regex.test(this.value)) {
+            passwordHelp.classList.remove('text-red-600');
+            passwordHelp.classList.add('text-gray-500');
+            this.classList.remove('error-border');
+        } else {
+            passwordHelp.classList.add('text-red-600');
+            passwordHelp.classList.remove('text-gray-500');
+            this.classList.add('error-border');
+        }
+    });
+
+    // Password confirmation check
+    const confirmPassword = document.getElementById('confirm_password');
+    const matchMsg = document.getElementById('passwordMatch');
+    const mismatchMsg = document.getElementById('passwordMismatch');
+
+    confirmPassword.addEventListener('input', function() {
+        if (password.value && confirmPassword.value) {
+            if (password.value === confirmPassword.value) {
+                matchMsg.style.display = 'block';
+                mismatchMsg.style.display = 'none';
+                confirmPassword.classList.remove('error-border');
+            } else {
+                matchMsg.style.display = 'none';
+                mismatchMsg.style.display = 'block';
+                confirmPassword.classList.add('error-border');
+            }
+        } else {
+            matchMsg.style.display = 'none';
+            mismatchMsg.style.display = 'none';
+        }
+    });
+
+    // Form submission validation
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        if (password.value !== confirmPassword.value) {
+            e.preventDefault();
+            mismatchMsg.style.display = 'block';
+            confirmPassword.classList.add('error-border');
+            confirmPassword.focus();
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,149 @@
+/* Theme Variables */
+:root {
+    --primary-color: #0d6efd;
+    --primary-dark: #0a58ca;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --light-bg: #f8f9fa;
+}
+
+/* Global Styles */
+body {
+    background-color: var(--light-bg);
+    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: none;
+    padding: 1rem 1.25rem;
+}
+
+/* Avatar Styles */
+.avatar-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.avatar-edit-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Activity Timeline */
+.activity-item {
+    position: relative;
+    padding-left: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-left: 2px solid #e9ecef;
+}
+
+.activity-item:last-child {
+    padding-bottom: 0;
+}
+
+.activity-icon {
+    position: absolute;
+    left: -0.9rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Session Items */
+.session-item {
+    transition: all 0.3s ease;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+.session-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+/* Form Controls */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Navbar */
+.navbar-brand img {
+    width: 40px;
+    height: 40px;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer */
+footer a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .avatar-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .card-header h5 {
+        font-size: 1.1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+}

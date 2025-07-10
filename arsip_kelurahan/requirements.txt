@@ -1,0 +1,66 @@
+# ========================================
+# PYTHON VERSION REQUIREMENT
+# ========================================
+# Minimal versi Python yang dibutuhkan
+# Pastikan kompatibilitas dengan semua package di bawah ini
+# Disarankan Python 3.10 atau 3.11 untuk stabilitas maksimal,
+# tapi sudah berhasil di Python 3.13 dengan psycopg3 versi terbaru.
+
+# ========================================
+# CORE FRAMEWORK & ENVIRONMENT
+# ========================================
+Flask==2.3.3                        # Micro web framework untuk membangun web apps
+gunicorn==23.0.0                   # Production WSGI HTTP server untuk UNIX
+python-dotenv==1.0.1               # Membaca key-value dari .env dan set environment variables
+
+# ========================================
+# DATABASE & ORM
+# ========================================
+SQLAlchemy==2.0.35                 # Toolkit SQL dan Object Relational Mapper
+flask-sqlalchemy==3.0.5            # Flask extension untuk integrasi SQLAlchemy
+flask-migrate==4.0.5               # Database migration via Alembic
+
+# PostgreSQL support dengan psycopg3 binary wheel
+psycopg[binary]==3.2.9             # PostgreSQL adapter psycopg versi 3, sudah terinstall dan support Python 3.13
+
+# Optional: MySQL support (uncomment jika diperlukan)
+# pymysql==1.1.0                   # MySQL client untuk SQLAlchemy
+
+# ========================================
+# AUTHENTICATION & SECURITY
+# ========================================
+PyJWT==2.9.0                      # JSON Web Token untuk autentikasi
+flask-login==0.6.3                # Manajemen session user untuk Flask
+flask-wtf==1.2.1                  # CSRF protection dan secure form handling
+flask-talisman==1.1.0             # HTTP security headers (CSP, HSTS, dll)
+bleach==6.1.0                    # Sanitasi HTML untuk mencegah XSS
+
+# ========================================
+# XMPP / REAL-TIME MESSAGING
+# ========================================
+slixmpp==1.8.4                   # Async XMPP client dan bot framework berbasis asyncio
+aiodns==3.1.1                    # Async DNS resolver untuk SRV lookups
+pyasn1==0.5.1                   # ASN.1 types & codecs untuk SASL dan TLS di XMPP
+
+# ========================================
+# RATE LIMITING & CACHING
+# ========================================
+redis==5.1.1                    # Redis client untuk caching dan pub/sub
+flask-limiter==3.5.0            # Flask extension untuk rate limiting
+
+# ========================================
+# LOGGING & DEBUGGING
+# ========================================
+structlog==24.4.0               # Structured logging, output JSON atau key-value
+
+# ========================================
+# UTILITIES
+# ========================================
+Werkzeug==3.0.4                 # WSGI utility library (dipakai oleh Flask)
+python-magic==0.4.27            # Deteksi tipe file dengan libmagic
+pillow==10.1.0                  # Image processing (contoh: avatars, thumbnails)
+
+# ========================================
+# EMAIL SUPPORT
+# ========================================
+flask-mailman==1.0.0            # Fork Flask-Mail modern & aktif dikembangkan
